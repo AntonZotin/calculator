@@ -32,7 +32,8 @@ class Calculator extends Component {
 
     onChangeWidth(value) {
         const { roundedLength } = this.state;
-        const res = (value > 830) ? 11 : parseInt(listWidth / value);
+        const diff = parseInt(listWidth / value)
+        const res = (value > 830) ? 11 : diff <= 10 ? diff : 10;
         const priceColor = (res && roundedLength) ? prices[res].color * roundedLength : 0;
         const priceCink = (res && roundedLength) ? prices[res].cink * roundedLength : 0;
         this.setState({
